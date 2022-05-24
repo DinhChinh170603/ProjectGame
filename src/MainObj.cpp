@@ -6,7 +6,7 @@
 MainObj::MainObj()
 {
     frame_ = 0;                // xử lí animations của player
-    x_pos_ = 15000;                // xử lí vị trí của player
+    x_pos_ = 0;                // xử lí vị trí của player
     y_pos_ = 0;                //
     x_val_ = 0;                // xử lí lượng di chuyển của player
     y_val_ = 0;                //
