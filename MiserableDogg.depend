@@ -1,0 +1,127 @@
+# depslib dependency file v1.0
+1653191781 source:d:\game\main.cpp
+	"CommonFunction.h"
+	"BaseObj.h"
+	"game_map.h"
+	"MainObj.h"
+	"ImpTimer.h"
+	"BulletObj.h"
+	"ThreatsObj.h"
+	"ExplosionObj.h"
+	"TextObj.h"
+	"ImgSp.h"
+	<iostream>
+
+1650519857 d:\game\commonfunc.h
+	<windows.h>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1650522122 d:\game\baseobject.h
+	"CommonFunc.h"
+
+1653190008 d:\game\include\commonfunction.h
+	<windows.h>
+	<string>
+	<vector>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<TextObj.h>
+
+1652779562 d:\game\include\baseobj.h
+	"CommonFunction.h"
+
+1650514690 source:d:\game\src\commonfunc.cpp
+	<CommonFunc.h>
+
+1650519857 d:\game\include\commonfunc.h
+	<windows.h>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1653323984 source:d:\game\src\commonfunction.cpp
+	"CommonFunction.h"
+	"BaseObj.h"
+	"TextObj.h"
+
+1652972613 source:d:\game\src\baseobj.cpp
+	"BaseObj.h"
+
+1650524335 source:d:\game\src\baseobject.cpp
+	"BaseObject.h"
+
+1650522122 d:\game\include\baseobject.h
+	"CommonFunc.h"
+
+1650543460 source:d:\game\src\gamemap.cpp
+	"gamemap.h"
+
+1650543671 d:\game\include\gamemap.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1652037717 source:d:\game\src\game_map.cpp
+	"game_map.h"
+
+1650606771 d:\game\include\game_map.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1653375093 source:d:\game\src\mainobj.cpp
+	"MainObj.h"
+	<iostream>
+
+1653190623 d:\game\include\mainobj.h
+	<vector>
+	"CommonFunction.h"
+	"BaseObj.h"
+	"BulletObj.h"
+
+1650695302 source:d:\game\src\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunction.h"
+
+1650695850 d:\game\include\imptimer.h
+
+1653075203 d:\game\include\bulletobj.h
+	"BaseObj.h"
+	"CommonFunction.h"
+
+1653075182 source:d:\game\src\bulletobj.cpp
+	"BulletObj.h"
+
+1652202609 source:d:\game\src\threatsobj.cpp
+	"ThreatsObj.h"
+
+1652123177 d:\game\include\threatsobj.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1652283432 source:d:\game\src\explosionobj.cpp
+	"ExplosionObj.h"
+
+1652187516 d:\game\include\explosionobj.h
+	<BaseObj.h>
+	<CommonFunction.h>
+
+1652790255 source:d:\game\src\textobj.cpp
+	"TextObj.h"
+
+1652863135 d:\game\include\textobj.h
+	<CommonFunction.h>
+
+1652552863 d:\game\include\imgsp.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1652776861 source:d:\game\src\imgsp.cpp
+	"ImgSp.h"
+

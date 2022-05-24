@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="MiserableDogg" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/test1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../Downloads/SDL2_mixer-2.0.4/x86_64-w64-mingw32/include/SDL2" />
+					<Add directory="../../Downloads/SDL2_ttf-2.0.14/x86_64-w64-mingw32/include/SDL2" />
+					<Add directory="../../Downloads/SDL2_image-2.0.5/x86_64-w64-mingw32/include/SDL2" />
+					<Add directory="../../Downloads/SDL2-2.0.20/x86_64-w64-mingw32/include/SDL2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lmingw32 -lSDL2main -lSDL2" />
+					<Add option="-lSDL2_image" />
+					<Add option="-lSDL2_ttf" />
+					<Add option="-lSDL2_mixer" />
+					<Add directory="../../Downloads/SDL2_mixer-2.0.4/x86_64-w64-mingw32/lib" />
+					<Add directory="../../Downloads/SDL2_ttf-2.0.14/x86_64-w64-mingw32/lib" />
+					<Add directory="../../Downloads/SDL2_image-2.0.5/x86_64-w64-mingw32/lib" />
+					<Add directory="../../Downloads/SDL2-2.0.20/x86_64-w64-mingw32/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/test1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/BaseObj.h" />
+		<Unit filename="include/BulletObj.h" />
+		<Unit filename="include/CommonFunction.h" />
+		<Unit filename="include/ExplosionObj.h" />
+		<Unit filename="include/ImgSp.h" />
+		<Unit filename="include/ImpTimer.h" />
+		<Unit filename="include/MainObj.h" />
+		<Unit filename="include/TextObj.h" />
+		<Unit filename="include/ThreatsObj.h" />
+		<Unit filename="include/game_map.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/BaseObj.cpp" />
+		<Unit filename="src/BulletObj.cpp" />
+		<Unit filename="src/CommonFunction.cpp" />
+		<Unit filename="src/ExplosionObj.cpp" />
+		<Unit filename="src/ImgSp.cpp" />
+		<Unit filename="src/ImpTimer.cpp" />
+		<Unit filename="src/MainObj.cpp" />
+		<Unit filename="src/TextObj.cpp" />
+		<Unit filename="src/ThreatsObj.cpp" />
+		<Unit filename="src/game_map.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
