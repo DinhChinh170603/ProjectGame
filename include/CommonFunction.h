@@ -68,7 +68,7 @@ typedef struct Map
 namespace SDLCommonFunc
 {
     bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
-    int ShowMenu(SDL_Renderer* des, TTF_Font* font);
+    int ShowMenu(SDL_Renderer* des, TTF_Font* font, Uint32 &time_menu);
     int ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_last, Uint32 high_scores);
     bool CheckFocusWithRect(const int &x, const int &y, const SDL_Rect & rect);
 }

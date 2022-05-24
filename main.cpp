@@ -118,26 +118,6 @@ std::vector<ThreatsObj*> MakeThreadList()    // hàm tạo ra các loại threat
         }
     }
 
-// sinh quái tĩnh
-//    ThreatsObj* threats_objs = new ThreatsObj[20];
-//
-//    for (int i = 0; i < 20; i++)
-//    {
-//        ThreatsObj* p_threat = (threats_objs + i);
-//        if (p_threat != NULL)
-//        {
-//            p_threat->LoadImg("img//threat_level.png", g_screen);
-//            p_threat->set_clips();
-//            p_threat->set_x_pos(700 + i*1200);
-//            p_threat->set_y_pos(250);
-//            p_threat->set_type_move(ThreatsObj::STATIC_THREAT);
-//            p_threat->set_input_left(0);
-//
-//
-//            list_threats.push_back(p_threat);
-//        }
-//    }
-
     return list_threats;
 }
 
@@ -191,6 +171,7 @@ int main(int argc, char* argv[])
 
         int num_die = 0; // số mạng
         Uint32 final_scores = 0;
+        Uint32 time_menu = 0;
 
         //Text Show
         TextObj time_game; // thời gian
@@ -221,7 +202,7 @@ int main(int argc, char* argv[])
         menu_font = TTF_OpenFont("font/dlxfont.ttf", 25);
         if (menu_font == NULL) return -1;
 
-        int ret_menu = SDLCommonFunc::ShowMenu(g_screen, menu_font);
+        int ret_menu = SDLCommonFunc::ShowMenu(g_screen, menu_font, time_menu);
         if (ret_menu == 1) is_quit = true;
         while (!is_quit)
         {
@@ -310,20 +291,6 @@ int main(int argc, char* argv[])
                             continue;
 
                         }
-                        else
-                        {
-                            p_threat->Free();
-                            close();
-                            SDL_Quit();
-                            return 0;
-                        }
-    //                    if (MessageBox(NULL, L"GAME OVER", L"Info", MB_OK | MB_ICONSTOP) == IDOK)
-    //                    {
-    //                        p_threat->Free();
-    //                        close();
-    //                        SDL_Quit();
-    //                        return 0;
-    //                    }
                     }
                 }
             }
@@ -378,11 +345,11 @@ int main(int argc, char* argv[])
 
      //Show thời gian
             std::string str_time = "Time: ";
-            Uint32 time_val = SDL_GetTicks() / 1000;
+            Uint32 time_val = (SDL_GetTicks() - time_menu) / 1000; // fix
             Uint32 val_time = 450 - time_val;
             if (val_time <= 0)
             {
-                return 0;
+                SDL_Delay(3000);
             }
             else
             {
@@ -477,6 +444,7 @@ int main(int argc, char* argv[])
             exit_game = false;
         }
     }
+
     close();
     return 0;
 }

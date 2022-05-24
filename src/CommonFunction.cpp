@@ -4,7 +4,7 @@
 #include "TextObj.h"
 
 // Show menu
-int SDLCommonFunc::ShowMenu(SDL_Renderer* des, TTF_Font* font) // truyền vào screen và font
+int SDLCommonFunc::ShowMenu(SDL_Renderer* des, TTF_Font* font, Uint32 &time_menu) // truyền vào screen và font
 {
     BaseObj Menu;
     bool ret_menu = Menu.LoadImg("img//menu.png", des); // Load ảnh vào file
@@ -44,6 +44,7 @@ int SDLCommonFunc::ShowMenu(SDL_Renderer* des, TTF_Font* font) // truyền vào 
         }
         while (SDL_PollEvent(&m_event))
         {
+            time_menu = SDL_GetTicks();   // đếm thời gian ở trong menu
             switch (m_event.type)
             {
             case SDL_QUIT:
@@ -158,7 +159,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
         Exit.Render(des, NULL);
 
         title.LoadFromRenderText(title_font, des);
-        title.RenderText(des, 300, 50);
+        title.RenderText(des, 300, 50);                   // tọa độ
         scores.LoadFromRenderText(title_font, des);
         scores.RenderText(des, 500, 150);
         high_scr.LoadFromRenderText(title_font2, des);
@@ -208,7 +209,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
                     xm = m_event.button.x;
                     ym = m_event.button.y;
 
-                    for (int i=0; i<kExitItemNum; i++)
+                    for (int i = 0; i < kExitItemNum; i++)
                     {
                         if (CheckFocusWithRect(xm, ym, text_Exit[i].GetRect()))
                         {
