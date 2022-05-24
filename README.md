@@ -11,7 +11,7 @@ A. Thông tin sinh viên:
 B. Hướng dẫn cài đặt:
 
   * Cách 1: 
-    - Truy cập vào link: https://cutt.ly/5HMv4i7
+    - Truy cập vào link: https://cutt.ly/qHMn3yw hoặc chọn Code<màu xanh> rồi chọn Download ZIP
     - Tải file .rar về và giải nén
     - Truy cập theo thứ tự: ProjectGame >> bin >> Debug >> test1
 
