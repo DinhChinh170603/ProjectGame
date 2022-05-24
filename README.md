@@ -1,4 +1,4 @@
-# ---------❤️---------Report ProjectGame---------❤️----------
+# --------❤️--------Report ProjectGame--------❤️---------
 
 A. Thông tin sinh viên:
   
