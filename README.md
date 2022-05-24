@@ -39,6 +39,40 @@ D. Các chức năng của game:
     - Màn hình gồm có nhân vật, map, background,...
   * Remote:
     - Ấn W để nhảy, A để di chuyển sang trái, D để di chuyển sang phải, J để ném xương.
-  *
+  * Class:
+    - CommonFunction: Dùng setup các thông số màn hình, fps, các biến nền tảng-cố định, xóa background cho nhân vật. Set up các hàm Show menu, exit, check va chạm giữa 2 đối tượng.
+    - ImpTimer: Xử lí các vấn đề thời gian.
+    - ImpSp: Xử lí các hình ảnh hỗ trợ như sinh mạng, item.
+    - TextObj: Xử lí việc đọc, load, render các text lên màn hình.
+    - Map: Sử dụng Kỹ thuật Tile Map(đọc từ file), xử lí màn hình di chuyển theo nhân vật.
+    - BaseObj: Khởi tạo các hàm như đọc file ảnh, render lên màn hình.
+    - MainObj: Xử lí các animations, tọa độ, xử lí toàn bộ các events của nhân vật như các keys thao tác từ bàn phím, va chạm với map, với quái, item, rơi xuống hố chết, đạn bắn,...
+    - BulletObj: Xử lí các vấn đề về chức năng đạn bắn, giới hạn đường đạn.
+    - ThreatsObj: Xử lí các vấn đề liên quan tới đối tượng quái vật như ảnh, animations, các chức năng đều kế thừa từ MainObj.
+    - ExplosionObj: Xử lí vấn đề va chạm như nhân vật va chạm với quái
+  * Link demo: ....
+
+
+ E. Các kỹ thuật lập trình:
+ 
+  * Sử dụng 4 thư viện: SDL2, SDL2_image, SDL2_ttf, SDL2_mixer.
+  * Xây dựng tuần tự cấu trúc, khởi tạo rồi đến các lớp,...
+  * Mảng: Dùng Vector, cấp phát mảng động để quản lí các lớp như bullet, threats.
+  * Các biến: quản lí bằng con trỏ, truyền tham chiếu, truyền tham trị,...
+  * Xử lí các thao tác từ bàn phím KeyButtondown...
+  * Xử lí text: Đọc text, render sang dạng font, hiển thị lên màn hình
+  * Xử lí ảnh: Đọc đường dẫn ảnh, load lên màn hình khi cần thiết
+  * Xử lí sound: Đọc đường dẫn sound, load sound khi cần thiết
+  * Giải phóng, tiết kiệm bộ nhớ, tránh tràn data,...
+
+F. Tổng kết:
+
+  1. Kết luận
+  2. Tâm đắc
+  3. Hướng phát triển
+  * Tạo thêm nhiều màn chơi với đa dạng các loại map, item, đạn, quái, boss...
+  * Nâng mức độ khó của game: Màn hình trôi liên tục khiến người chơi phải suy nghĩ và xử lí nhanh, threats có đạn bắn về 2 phía, threats tấn công bất thường, giới hạn đạn bắn của nhân vật,....
+
+
 
 
