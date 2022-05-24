@@ -209,10 +209,11 @@ int main(int argc, char* argv[])
     //  âm thanh
         Mix_Chunk* chunkdie = Mix_LoadWAV("audio//die.wav");
         Mix_Chunk* chunkend = Mix_LoadWAV("audio//win.wav");
+        Mix_Chunk* chunklose = Mix_LoadWAV("audio//lose.wav");
 
         Mix_Music* musicgame = Mix_LoadMUS("audio//musicgame.mp3");
         Mix_VolumeMusic(MIX_GAME);          // chỉnh âm lượng
-        Mix_PlayMusic(musicgame, 1);  // phát nhạc nền
+        Mix_PlayMusic(musicgame, 1);    // phát nhạc nền
 
     // vòng lặp để chơi
         bool is_quit = false;
@@ -439,7 +440,7 @@ int main(int argc, char* argv[])
                 {
                     high_scores = final_scores;      // cập nhật điểm cao nhất
                 }
-                Mix_PlayChannel(-1, chunkend, 0);
+                Mix_PlayChannel(-1, chunklose, 0);
                 SDL_Delay(3000);
                 break;
             }
