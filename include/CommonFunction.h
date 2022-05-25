@@ -64,13 +64,13 @@ typedef struct Map
     char* file_name_;
 };
 
-// xử lí va chạm bullet with threats
+
 namespace SDLCommonFunc
 {
-    bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
-    int ShowMenu(SDL_Renderer* des, TTF_Font* font, Uint32 &time_menu);
-    int ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_last, Uint32 high_scores);
-    bool CheckFocusWithRect(const int &x, const int &y, const SDL_Rect & rect);
+    bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2); // xử lí va chạm bullet with threats
+    int ShowMenu(SDL_Renderer* des, TTF_Font* font, Uint32 &time_menu);                       // Show
+    int ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_last, Uint32 high_scores);  // Show
+    bool CheckFocusWithRect(const int &x, const int &y, const SDL_Rect & rect);     // Check hiệu ứng click
 }
 
 #endif // COMMONFUNCTION_H

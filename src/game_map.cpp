@@ -47,7 +47,7 @@ void GameMap::LoadMap(char* name)
 
 void GameMap::LoadTiles(SDL_Renderer* screen)
 {
-    char file_img[30];
+    char file_img[MAX_TILES];
     FILE* fp = NULL;
 
     for (int i = 0; i < MAX_TILES; i++)

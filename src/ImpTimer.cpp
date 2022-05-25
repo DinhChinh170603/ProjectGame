@@ -13,7 +13,7 @@ ImpTimer::ImpTimer()
 
 ImpTimer::~ImpTimer()
 {
-
+    // Free
 }
 
 void ImpTimer::start()
