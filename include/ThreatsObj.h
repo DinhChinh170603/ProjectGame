@@ -4,12 +4,12 @@
 #define THREATSOBJ_H
 
 #include "CommonFunction.h"
-#include "BaseObj.h"
+#include "BaseObj.h"   // kế thừa
 
-#define THREAT_FRAME_NUM 8
+#define THREAT_FRAME_NUM 8                // lượng frame threats
 #define THREAT_GRAVITY_SPEED 0.8
 #define THREAT_MAX_FAIL_SPEED 10
-#define THREAT_SPEED 1.8
+#define THREAT_SPEED 1.8                  // tốc độ threats
 
 class ThreatsObj : public BaseObj
 {

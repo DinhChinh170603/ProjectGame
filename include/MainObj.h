@@ -8,6 +8,7 @@
 #include "BaseObj.h"
 #include "BulletObj.h"
 
+#define PLAYER_FRAME_NUM 8        // lượng frame được load
 #define GRAVITY_SPEED 0.8         // tốc độ rơi
 #define MAX_FAIL_SPEED 9          // tốc độ rơi tối đa
 #define PLAYER_SPEED 3.5          // tốc độ chạy
@@ -66,16 +67,16 @@ private:
     int item_count2;
     int item_count3;
     std::vector<BulletObj*> p_bullet_list_;
-    float x_val_;
+    float x_val_;             // lượng thay đổi
     float y_val_;
 
-    float x_pos_;
+    float x_pos_;             // tọa độ hiện tại
     float y_pos_;
 
     int width_frame_;
     int height_frame_;
 
-    SDL_Rect frame_clip_[8];
+    SDL_Rect frame_clip_[PLAYER_FRAME_NUM];
     Input input_type_;
     int frame_;
     int status_;
@@ -88,7 +89,7 @@ private:
 
     int delay_bullet;
 
-    Mix_Chunk* chunkitem;
+    Mix_Chunk* chunkitem;     // biến âm thanh
     Mix_Chunk* chunkbullet;
     Mix_Chunk* chunkwin;
 };

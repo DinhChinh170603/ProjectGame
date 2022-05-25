@@ -115,7 +115,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
 
     if (!ret_Exit) return -1;
 
-    const int kExitItemNum = 2;
+    const int kExitItemNum = 2;     // số lượng text muốn hiển thị
 
     TextObj text_Exit[kExitItemNum], title, scores, high_scr;
 
@@ -132,13 +132,13 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
     high_scr.SetColor(TextObj::WHITE_TEXT);
 
 
-    text_Exit[0].SetText("Back To Menu");
-    text_Exit[0].SetColor(TextObj::WHITE_TEXT);
-    text_Exit[0].rect_.x = 600;
-    text_Exit[0].rect_.y = 480;
-    text_Exit[0].LoadFromRenderText(title_font2, des);
-    text_Exit[0].rect_.h = text_Exit[0].GetHeight();
-    text_Exit[0].rect_.w = text_Exit[0].GetWidth();
+    text_Exit[0].SetText("Back To Menu");                       // Nhập text
+    text_Exit[0].SetColor(TextObj::WHITE_TEXT);                 // Set màu cho Text
+    text_Exit[0].rect_.x = 600;                                 // tọa độ của texgt
+    text_Exit[0].rect_.y = 480;                                 //
+    text_Exit[0].LoadFromRenderText(title_font2, des);          // chuyển text đọc được sang dạng font
+    text_Exit[0].rect_.h = text_Exit[0].GetHeight();            // lưu lại độ rộng và độ cao của text để sau checkfocus
+    text_Exit[0].rect_.w = text_Exit[0].GetWidth();             //
 
     text_Exit[1].SetText("Exit");
     text_Exit[1].SetColor(TextObj::WHITE_TEXT);
@@ -148,8 +148,8 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
     text_Exit[1].rect_.h = text_Exit[0].GetHeight();
     text_Exit[1].rect_.w = text_Exit[0].GetWidth();
 
-    bool selected[kExitItemNum] = {0, 0};
-    int xm = 0, ym = 0;
+    bool selected[kExitItemNum] = {0, 0};   // khởi tạo 2 giá trị false tương ứng với 2 check
+    int xm = 0, ym = 0;          // khởi tạo tọa độ của chuột
     SDL_Event m_event;
 
     while(1)
@@ -159,15 +159,15 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
         Exit.Render(des, NULL);
 
         title.LoadFromRenderText(title_font, des);
-        title.RenderText(des, 300, 50);                   // tọa độ
+        title.RenderText(des, 300, 50);                   // tọa độ để render "Score: "
         scores.LoadFromRenderText(title_font, des);
-        scores.RenderText(des, 500, 150);
+        scores.RenderText(des, 500, 150);                 // tọa độ để render điểm đạt được ra màn hình
         high_scr.LoadFromRenderText(title_font2, des);
-        high_scr.RenderText(des, 300, 280);
+        high_scr.RenderText(des, 300, 280);               // tọa độ để render điểm cao nhất qua các lần chơi ra màn hình
 
         for (int i = 0; i < kExitItemNum; i++)
         {
-            text_Exit[i].LoadFromRenderText(font, des);
+            text_Exit[i].LoadFromRenderText(font, des);      // load và render 2 text lên màn hình
             text_Exit[i].RenderText(des, text_Exit[i].rect_.x, text_Exit[i].rect_.y);
         }
         while (SDL_PollEvent(&m_event))
@@ -176,7 +176,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
             {
             case SDL_QUIT:
                 return 1;
-            case SDL_MOUSEMOTION:
+            case SDL_MOUSEMOTION:    // di chuột
                 {
                     xm = m_event.motion.x;
                     ym = m_event.motion.y;
@@ -185,7 +185,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
                     {
                         if (CheckFocusWithRect(xm, ym, text_Exit[i].GetRect()))
                         {
-                            if (selected[i] == false)
+                            if (selected[i] == false) // nếu đang ở ngoài
                             {
                                 selected[i] = 1;
                                 text_Exit[i].SetColor(TextObj::RED_TEXT);
@@ -194,7 +194,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
                         }
                         else
                         {
-                            if (selected[i] == true)
+                            if (selected[i] == true)   // nếu đang ở trong
                             {
                                 selected[i] = 0;
                                 text_Exit[i].SetColor(TextObj::WHITE_TEXT);
@@ -234,7 +234,7 @@ int SDLCommonFunc::ShowExit(SDL_Renderer* des, TTF_Font* font, Uint32 scores_las
 
 bool SDLCommonFunc::CheckFocusWithRect(const int &x, const int &y, const SDL_Rect& rect)
 {
-    if (x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h)
+    if (x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h)  // kiểm tra tọa độ của chuột với tọa độ của text
     {
         return true;
     }
@@ -243,7 +243,7 @@ bool SDLCommonFunc::CheckFocusWithRect(const int &x, const int &y, const SDL_Rec
 
 
 // set kiểm tra va chạm giữa 2 đối tượng
-bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
+bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2) // truyền vào tọa độ của 2 đối tượng
 {
     int left_a = object1.x;
     int right_a = object1.x + object1.w;
@@ -277,7 +277,6 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     {
         if (top_a > top_b && top_a < bottom_b)
         {
-
             return true;
         }
     }
@@ -286,7 +285,6 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     {
         if (bottom_a > top_b && bottom_a < bottom_b)
         {
-
             return true;
         }
     }
@@ -296,7 +294,6 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     {
         if (top_b > top_a && top_b < bottom_a)
         {
-
             return true;
         }
     }
@@ -305,7 +302,6 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     {
         if (bottom_b > top_a && bottom_b < bottom_a)
         {
-
             return true;
         }
     }
@@ -323,7 +319,6 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     {
         if (bottom_b > top_a && bottom_b < bottom_a)
         {
-
             return true;
         }
     }
@@ -331,9 +326,7 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
 // Case 3: size object 1 = size object 2
     if (top_a == top_b && right_a == right_b && bottom_a == bottom_b)
     {
-
         return true;
     }
-
     return false;
 }

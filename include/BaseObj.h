@@ -12,7 +12,7 @@ public:
     BaseObj();
     ~BaseObj();
     void SetRect(const int &x, const int &y) {rect_.x = x, rect_.y = y;}
-    SDL_Rect GetRect() const {return rect_;}
+    SDL_Rect GetRect() const {return rect_;}      // trả về tọa độ cần lấy
     SDL_Texture* GetObject() const {return p_object_;}
 
     virtual bool LoadImg(std::string path, SDL_Renderer* screen); // load ảnh lên

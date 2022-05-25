@@ -66,6 +66,7 @@ void GameMap::LoadTiles(SDL_Renderer* screen)
     }
 }
 
+//
 void GameMap::DrawMap(SDL_Renderer* screen)
 {
     int x1 = 0;
@@ -87,7 +88,7 @@ void GameMap::DrawMap(SDL_Renderer* screen)
     y1 = (game_map_.start_y_%TILE_SIZE)*-1;
     y2 = y1 + SCREEN_HEIGHT + (y1 == 0 ? 0 : TILE_SIZE);
 
-    for (int i = y1; i < y2; i += TILE_SIZE)
+    for (int i = y1; i < y2; i += TILE_SIZE) // đọc các tile map bằng mảng 2 chiều
     {
         map_x = game_map_.start_x_/TILE_SIZE;
         for (int j = x1; j < x2; j += TILE_SIZE)

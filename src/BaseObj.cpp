@@ -1,12 +1,13 @@
 #include "BaseObj.h"
 
+// hàm khởi tạo
 BaseObj::BaseObj()
 {
-    p_object_ = NULL;
-    rect_.x = 0;
-    rect_.y = 0;
-    rect_.w = 0;
-    rect_.h = 0;
+    p_object_ = NULL;    //
+    rect_.x = 0;         // tọa độ của ảnh
+    rect_.y = 0;         //
+    rect_.w = 0;         //
+    rect_.h = 0;         //
 }
 
 BaseObj::~BaseObj()
@@ -44,6 +45,7 @@ void BaseObj::Render(SDL_Renderer* des, const SDL_Rect* clip /* = NULL */)
     SDL_RenderCopy(des, p_object_, clip, &renderquad);
 }
 
+// giải phóng p_object
 void BaseObj::Free()
 {
     if (p_object_ != NULL)

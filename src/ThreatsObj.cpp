@@ -11,19 +11,17 @@ ThreatsObj::ThreatsObj()
     y_val_ = 0.0;                //
     width_frame_ = 0;          // chiều rộng threats
     height_frame_ = 0;         // chiều cao threats
-    on_ground_ = false;
+    on_ground_ = false;        // check threats trên mặt đất
     come_back_time = 0;
-
-    animation_a_ = 0;
-    animation_b_ = 0;
+    animation_a_ = 0;          // giới hạn di chuyển của threats
+    animation_b_ = 0;          //
     input_type_.left_ = 0;
-    type_move_ = STATIC_THREAT;
-
+    type_move_ = STATIC_THREAT;  //
 }
 
 ThreatsObj::~ThreatsObj()
 {
-
+    // Free
 }
 
 bool ThreatsObj::LoadImg(std::string path, SDL_Renderer* screen)
@@ -103,7 +101,7 @@ void ThreatsObj::Show(SDL_Renderer* des)
         rect_.x = x_pos_ - map_x_;
         rect_.y = y_pos_ - map_y_;
         frame_++;
-        if (frame_ >= 8)
+        if (frame_ >= THREAT_FRAME_NUM)
         {
             frame_ = 0;
         }
@@ -137,7 +135,7 @@ void ThreatsObj::DoPlayer(Map& gMap)
 
         CheckToMap(gMap);
     }
-    else if (come_back_time > 0)
+    else if (come_back_time > 0)  // xử lí threats lúc đầu game rơi xuống hố
     {
         come_back_time--;
         if (come_back_time == 0)

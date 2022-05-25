@@ -9,7 +9,7 @@ ImgSp::ImgSp()
 
 ImgSp::~ImgSp()
 {
-
+    //Free
 }
 
 void ImgSp::AddPos(const int& xp)
@@ -31,6 +31,7 @@ void ImgSp::Init(SDL_Renderer* screen)
     AddPos(185);
 }
 
+// Show mạng
 void ImgSp::Show(SDL_Renderer* screen)
 {
     for (int i = 0; i < pos_list_.size(); i++)
@@ -41,10 +42,11 @@ void ImgSp::Show(SDL_Renderer* screen)
     }
 }
 
+// Xử lí mất mạng
 void ImgSp::Decrease()
 {
     number_--;
-    pos_list_.pop_back();
+    pos_list_.pop_back();   // xóa phần tử cuối
 }
 
 
@@ -56,9 +58,10 @@ PlayerItem::PlayerItem()
 
 PlayerItem::~PlayerItem()
 {
-    //
+    // Free
 }
 
+// hàm khởi tạo đọc file ảnh
 void PlayerItem::Init1(SDL_Renderer* screen)
 {
     bool ret = LoadImg("img//item1.png", screen);
@@ -72,6 +75,7 @@ void PlayerItem::Init3(SDL_Renderer* screen)
     bool ret = LoadImg("img//item3.png", screen);
 }
 
+// hàm show
 void PlayerItem::Show(SDL_Renderer* screen)
 {
     rect_.x = x_pos_;

@@ -126,30 +126,34 @@ int main(int argc, char* argv[])
 {
     ImpTimer fps_timer;
 
-    if (InitData() == false)
+    if (InitData() == false)   // check xem có khởi tạo game thành công không
         return -1;
 
-    if (LoadBackground() == false)
+    if (LoadBackground() == false)   // check xem bg có được load không
         return -1;
 
     bool exit_game = false;
     Uint32 high_scores = 0;
+    // vòng lặp gameloop
     while (!exit_game)
     {
         exit_game = true;
 
-
+        // load tiles map
         GameMap game_map;
         game_map.LoadMap("map/map01.dat");
         game_map.LoadTiles(g_screen);
 
+        // load hình ảnh nhân vật
         MainObj p_player;
         p_player.LoadImg("img//player_right.png", g_screen);
         p_player.set_clips();
 
+        // load hình ảnh sinh mạng
         ImgSp player_life;
         player_life.Init(g_screen);
 
+        // load hình ảnh item
         PlayerItem player_item1;
         player_item1.Init1(g_screen);
         PlayerItem player_item2;
@@ -158,20 +162,21 @@ int main(int argc, char* argv[])
         player_item3.Init3(g_screen);
 
 
-    //xử lí va chạm kết hợp animations của nhân vật khi va chạm
-        ExplosionObj exp_main;
+    // xử lí va chạm kết hợp animations của nhân vật khi va chạm
+        ExplosionObj exp_main;    // tạo biến dựa trên class
         bool mRet = exp_main.LoadImg("img//player_death.png", g_screen);
         if (!mRet) return -1;
         exp_main.set_clip();
 
+        // quản lí danh sách threats bằng vector
         std::vector<ThreatsObj*> threats_list = MakeThreadList();
 
-        int frame_exp_width = exp_main.get_width_frame();
+        int frame_exp_width = exp_main.get_width_frame();       // chiều cao chiều rộng của frame
         int frame_exp_height = exp_main.get_height_frame();
 
-        int num_die = 0; // số mạng
-        Uint32 final_scores = 0;
-        Uint32 time_menu = 0;
+        int num_die = 0;             // số mạng
+        Uint32 final_scores = 0;     // điểm
+        Uint32 time_menu = 0;        // time
 
         //Text Show
         TextObj time_game; // thời gian
@@ -238,7 +243,7 @@ int main(int argc, char* argv[])
 
             //show item
             player_item1.Show(g_screen);
-            player_item1.SetPos(SCREEN_WIDTH*0.5 - 250, 8);
+            player_item1.SetPos(SCREEN_WIDTH*0.5 - 250, 8);         // set vị trí item
             player_item2.Show(g_screen);
             player_item2.SetPos(SCREEN_WIDTH*0.5 - 100, 8);
             player_item3.Show(g_screen);
@@ -283,7 +288,7 @@ int main(int argc, char* argv[])
                         if (num_die < 3)
                         {
                             p_player.SetRect(0, 0);
-                            p_player.set_comeback_time(60);
+                            p_player.set_comeback_time(60); // đếm ngược để hồi sinh
                             Mix_PlayChannel(-1, chunkdie, 0);
                             SDL_Delay(1000);
                             player_life.Decrease();       // giảm mạng
@@ -308,7 +313,7 @@ int main(int argc, char* argv[])
             }
 
     // xử lí va chạm bullet với threats
-    std::vector<BulletObj*> bullet_arr = p_player.get_bullet_list();
+    std::vector<BulletObj*> bullet_arr = p_player.get_bullet_list();         // quản lí danh sách bullet bằng vector
             for (int r = 0; r < bullet_arr.size(); r++)
             {
                 BulletObj* p_bullet = bullet_arr.at(r);
@@ -321,14 +326,15 @@ int main(int argc, char* argv[])
                         {
 
                             SDL_Rect tRect;
+                            // lấy ra các tọa độ của threats
                             tRect.x = obj_threat->GetRect().x;
                             tRect.y = obj_threat->GetRect().y;
                             tRect.w = obj_threat->get_width_frame(); // vì sử dụng khung hình để load hiệu ứng động nên chỉ lấy ra cái khung hình width chuẩn
                             tRect.h = obj_threat->get_height_frame();
 
-                            SDL_Rect bRect = p_bullet->GetRect();
+                            SDL_Rect bRect = p_bullet->GetRect();       // lấy ra tọa độ của bullet
 
-                            bool bCol = SDLCommonFunc::CheckCollision(bRect, tRect);
+                            bool bCol = SDLCommonFunc::CheckCollision(bRect, tRect);   // check va chạm của bullet với threats
 
                             if (bCol)
                             {
@@ -345,7 +351,7 @@ int main(int argc, char* argv[])
 
      //Show thời gian
             std::string str_time = "Time: ";
-            Uint32 time_val = (SDL_GetTicks() - time_menu) / 1000; // fix
+            Uint32 time_val = (SDL_GetTicks() - time_menu) / 1000; // fix chỉ khi vào game thì thời gian mới bắt đầu đếm
             Uint32 val_time = 450 - time_val;
             if (val_time <= 0)
             {

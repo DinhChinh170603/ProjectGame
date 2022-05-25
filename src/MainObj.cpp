@@ -43,16 +43,16 @@ bool MainObj::LoadImg(std::string path, SDL_Renderer* screen)
 
     if (ret == true)
     {
-        width_frame_ = rect_.w/8;
+        width_frame_ = rect_.w/PLAYER_FRAME_NUM;       // chia 8 để lấy chiều cao chiều rộng của 1 frame
         height_frame_ = rect_.h;
     }
 
-    return ret;
+    return ret;   // trả về ảnh nếu load được
 }
 
 SDL_Rect MainObj::GetRectFrame()
 {
-    SDL_Rect rect;
+    SDL_Rect rect;                // set rect của 1 frame
     rect.x = rect_.x;
     rect.y = rect_.y;
     rect.w = width_frame_;
@@ -72,7 +72,7 @@ void MainObj::set_clips()
         frame_clip_[0].w = width_frame_;
         frame_clip_[0].h = height_frame_;
 
-        frame_clip_[1].x = width_frame_;
+        frame_clip_[1].x = width_frame_;                 // lần lượt cộng thêm 1 lần chiều rộng
         frame_clip_[1].y = 0;
         frame_clip_[1].w = width_frame_;
         frame_clip_[1].h = height_frame_;
@@ -106,18 +106,44 @@ void MainObj::set_clips()
         frame_clip_[7].y = 0;
         frame_clip_[7].w = width_frame_;
         frame_clip_[7].h = height_frame_;
+    }
+}
 
+// hàm cập nhật hình ảnh cho nhân vật
+void MainObj::UpdateImagePlayer(SDL_Renderer* des)
+{
+    if (on_ground_ == true)
+    {
+        if (status_ == WALK_LEFT)
+        {
+            LoadImg("img//player_left.png", des);
+        }
+        else
+        {
+            LoadImg("img//player_right.png", des);
+        }
+    }
+    else
+    {
+        if (status_ == WALK_LEFT)
+        {
+            LoadImg("img//jump_left.png", des);
+        }
+        else
+        {
+            LoadImg("img//jump_right.png", des);
+        }
     }
 }
 
 void MainObj::Show(SDL_Renderer* des)
 {
-    UpdateImagePlayer(des);
+    UpdateImagePlayer(des);   // hàm đọc ảnh tương ứng chuyển động
 
     if (input_type_.left_ == 1 ||
         input_type_.right_ == 1)
     {
-        frame_++;
+        frame_++;      // lần lượt load các frame 1 cách liên tục
     }
     else
     {
@@ -129,9 +155,9 @@ void MainObj::Show(SDL_Renderer* des)
         frame_ = 0;
     }
 
-    if (come_back_time == 0)
+    if (come_back_time == 0)     // nếu thời gian delay hết
     {
-        rect_.x = x_pos_ - map_x_;
+        rect_.x = x_pos_ - map_x_;      // tọa độ từ đầu màn hình đang hiển thị tới vị trí của nhân vật được tính
         rect_.y = y_pos_ - map_y_;
 
         SDL_Rect* current_clip = &frame_clip_[frame_];
@@ -145,13 +171,13 @@ void MainObj::Show(SDL_Renderer* des)
 // hàm xử lí các thao tác từ bản phím
 void MainObj::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
 {
-    if (delay_bullet > 0)
+    if (delay_bullet > 0)   // không cho bullet bắn liên tục
     {
         delay_bullet--;
     }
     if (events.type == SDL_KEYDOWN) // KEYDOWN là ấn bất kì nút nào từ bàn phím
     {
-        switch (events.key.keysym.sym)
+        switch (events.key.keysym.sym)   // check có thao tác từ bàn phím
         {
         case SDLK_d:        // nút mũi tên sang phải
             {
@@ -201,7 +227,7 @@ void MainObj::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
             Mix_PlayChannel(-1, chunkbullet, 0);               // phát ra âm thanh đạn bắn
             if (status_ == WALK_LEFT)
             {
-                p_bullet->set_bullet_dir(BulletObj::DIR_LEFT);
+                p_bullet->set_bullet_dir(BulletObj::DIR_LEFT);                           // set hướng
                 p_bullet->SetRect(this->rect_.x, rect_.y + height_frame_*PLAYER_BULLET);   // set vị trí đạn bắn ra
             }
             else
@@ -222,7 +248,7 @@ void MainObj::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
 
 
 // hàm xử lí bắn đạn ra
-void MainObj::HandelBullet(SDL_Renderer* des, Map& map_data)
+void MainObj::HandelBullet(SDL_Renderer* des, Map& map_data)     // truyền vào màn hình và địa chỉ map
 {
     for (int i = 0; i < p_bullet_list_.size(); i++)
     {
@@ -264,66 +290,6 @@ void MainObj::RemoveBullet(const int& idx)
     }
 }
 
-
-// xử lí toàn bộ các events player
-void MainObj::DoPlayer(Map& map_data, Uint32 &mark_value)
-{
-    if (come_back_time == 0)  // chỉ khi nào nhân vật chạm đất mới thực hiện các chức năng này
-    {
-        x_val_ = 0;
-        y_val_ += GRAVITY_SPEED;
-
-        if (y_val_ >= MAX_FAIL_SPEED)
-        {
-            y_val_ = MAX_FAIL_SPEED;
-        }
-
-        if (input_type_.left_ == 1)
-        {
-            x_val_ -= PLAYER_SPEED;
-        }
-        else if (input_type_.right_ == 1)
-        {
-            x_val_ += PLAYER_SPEED;
-        }
-
-        if (input_type_.jump_ == 1)
-        {
-            if (on_ground_ == true) // xử lí chỉ khi nào trên mặt đất mới có thể nhảy (không cho nhảy 2 lần)
-            {
-                y_val_ = - PLAYER_JUMP_VAL;
-            }
-
-            on_ground_ = false; // fix lỗi nhảy rời rạc
-            input_type_.jump_ = 0; // nhảy xong thì gán về 0
-        }
-
-        CheckToMap(map_data, mark_value );
-        CenterEntityOnMap(map_data);
-    }
-
-    if (come_back_time > 0)  // chỉ khi nào nhân vật bị rơi khỏi map mới thực hiện các chức năng này
-    {
-        come_back_time--;
-        if (come_back_time == 0)
-        {
-            on_ground_ = false;
-            if (x_pos_ > 256)
-            {
-                x_pos_ -= 256; // 4 ô tile map
-            }
-            else
-            {
-                x_pos_ = 0;
-            }
-
-            y_pos_ = 0;
-            x_val_ = 0;
-            y_val_ = 0;
-        }
-    }
-}
-
 // hàm xử lí map di chuyển theo nhân vật
 void MainObj::CenterEntityOnMap(Map& map_data)
 {
@@ -348,6 +314,7 @@ void MainObj::CenterEntityOnMap(Map& map_data)
     }
 }
 
+// xử lí va chạm với map, với các item
 void MainObj::CheckToMap(Map& map_data, Uint32 &mark_value)
 {
     int x1 = 0;
@@ -582,10 +549,68 @@ void MainObj::CheckToMap(Map& map_data, Uint32 &mark_value)
     if (y_pos_+64 > map_data.max_y_) // xử lí lỗi 1 vài hố rơi không chết (+1 tile map)
     {
         come_back_time = 60;
-
     }
 
 }
+
+// xử lí toàn bộ các events player
+void MainObj::DoPlayer(Map& map_data, Uint32 &mark_value)
+{
+    if (come_back_time == 0)  // chỉ khi nào nhân vật chạm đất mới thực hiện các chức năng này
+    {
+        x_val_ = 0;
+        y_val_ += GRAVITY_SPEED;
+
+        if (y_val_ >= MAX_FAIL_SPEED)
+        {
+            y_val_ = MAX_FAIL_SPEED;
+        }
+
+        if (input_type_.left_ == 1)
+        {
+            x_val_ -= PLAYER_SPEED;
+        }
+        else if (input_type_.right_ == 1)
+        {
+            x_val_ += PLAYER_SPEED;
+        }
+
+        if (input_type_.jump_ == 1)
+        {
+            if (on_ground_ == true) // xử lí chỉ khi nào trên mặt đất mới có thể nhảy (không cho nhảy 2 lần)
+            {
+                y_val_ = - PLAYER_JUMP_VAL;
+            }
+
+            on_ground_ = false; // fix lỗi nhảy rời rạc
+            input_type_.jump_ = 0; // nhảy xong thì gán về 0
+        }
+
+        CheckToMap(map_data, mark_value);
+        CenterEntityOnMap(map_data);
+    }
+
+    if (come_back_time > 0)  // chỉ khi nào nhân vật bị rơi khỏi map mới thực hiện các chức năng này
+    {
+        come_back_time--;
+        if (come_back_time == 0)
+        {
+            on_ground_ = false;
+            if (x_pos_ > 256)
+            {
+                x_pos_ -= 256; // 4 ô tile map
+            }
+            else
+            {
+                x_pos_ = 0;
+            }
+            y_pos_ = 0;
+            x_val_ = 0;
+            y_val_ = 0;
+        }
+    }
+}
+
 
 // hàm thu thập lượng iteam ăn được
 void MainObj::IncreaseItem1()
@@ -600,34 +625,6 @@ void MainObj::IncreaseItem3()
 {
     item_count3++;
 }
-
-// hàm cập nhật hình ảnh cho nhân vật
-void MainObj::UpdateImagePlayer(SDL_Renderer* des)
-{
-    if (on_ground_ == true)
-    {
-        if (status_ == WALK_LEFT)
-        {
-            LoadImg("img//player_left.png", des);
-        }
-        else
-        {
-            LoadImg("img//player_right.png", des);
-        }
-    }
-    else
-    {
-        if (status_ == WALK_LEFT)
-        {
-            LoadImg("img//jump_left.png", des);
-        }
-        else
-        {
-            LoadImg("img//jump_right.png", des);
-        }
-    }
-}
-
 
 // hàm xử lí rơi xuống vực bị mất mạng
 bool MainObj::IsDeath(Map& map_data, int &num_die)
