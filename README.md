@@ -75,6 +75,7 @@
   * Graphics: Mức tốt, các hình ảnh trong game được thiết kế tỉ mỉ, mềm mại, có tính ăn ý với nhau.
   * Mixer: Các âm thanh cơ bản như nhạc nền, sound effect như bắn, rơi, chết, ăn item được chọn lọc.
   * Độ thân thiện: Game tương đối đơn giản, quen thuộc và dễ chơi phù hợp với trẻ em và trung niên. Nhạc của game khá chill không chỉ dùng làm nền mà có thể dùng để nghe ngủ.
+  
   **2. Tâm đắc**
   * Design map 1 cách tỉ mỉ tinh tế, suy nghĩ tạo ra game cần sự khéo léo, cẩn thận để có thể vượt qua.
   * Hiểu hơn về cách tạo một dự án, cách lên kế hoạch, cách xây dựng cấu trúc - lớp.
@@ -82,6 +83,7 @@
   * Hiểu hơn về cách quản lí các đối tượng, các biến bằng con trỏ, sử dụng các biến giữa các file bằng cách kế thừa và truyền tham chiếu. Sử dụng mảng, cấp phát bộ nhớ động, giải phóng và tiết kiệm bộ nhớ.
   * Biết phối hợp toàn bộ các kiến thức đã học trong suốt môn lập trình.
   * Củng cố về kĩ năng tìm tòi, đọc hiểu, tra cứu các vấn đề của game.
+  
   **3. Hướng phát triển**
   * Trước hết là thu nhỏ tilemap về 32x32, giúp đồ họa game tiên tiến, mềm mại hơn, giúp có thể dễ dàng edit map được nhiều chi tiết hơn.
   * Tạo thêm nhiều các level chơi với đa dạng các loại map, item, đạn, quái, boss...
