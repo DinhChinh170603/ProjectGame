@@ -91,6 +91,6 @@
   * Làm chi tiết menu hơn, kết hợp việc điều chỉnh tắt bật to bé âm thanh trực tiếp trong game.
 
 
-Thanks for reading <3
+# Thanks for reading <3
 
 
