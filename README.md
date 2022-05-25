@@ -3,14 +3,14 @@
 A. Thông tin sinh viên:
   
   *	Full name: Lưu Đình Chính  
-  *	Faculty: Science and Technology (CN1) – Class: K66CD  
+  *	Major: Science and Technology (CN1) – Class: K66CD  
   *	Email address: 21020288@vnu.edu.vn  
   *	Phone number: 0816086988  
   *	IDE used: Code::Blocks 20.03
   
 B. Hướng dẫn cài đặt:
 
-  * Truy cập vào link: https://cutt.ly/qHMn3yw hoặc chọn Code<màu xanh> rồi chọn Download ZIP
+  * Truy cập vào link: https://cutt.ly/3H1FOwB hoặc chọn Code<màu xanh> rồi chọn Download ZIP
   * Tải file .rar về và giải nén
   * Truy cập theo thứ tự: ProjectGame >> bin >> Debug >> test1
 
@@ -31,6 +31,7 @@ D. Các chức năng của game:
   * Menu:
     - Game có main menu với giao diện hài hòa, đơn giản nhưng mang đầy sự tinh tế.
     - Chọn Play Game để vào trò chơi, Exit để thoát trò chơi.
+    - Cuối game có Menu cập nhật Score và Highscores kèm các nút bấm như Back To Menu để trở về Menu ban đầu và chơi lại, Exit để thoát trò chơi. 
   * Mixer:
     - Music: nhạc nền của game chill, du dường, đầy tính thử thách...
     - SFX: tiếng nhân vật ăn được item, tiếng rơi xuống hố, tiếng va chạm với quái, tiếng đạn bắn, tiếng win game, tiếng lose game.
@@ -50,7 +51,7 @@ D. Các chức năng của game:
     - BulletObj: Xử lí các vấn đề về chức năng đạn bắn, giới hạn đường đạn.
     - ThreatsObj: Xử lí các vấn đề liên quan tới đối tượng quái vật như ảnh, animations, các chức năng đều kế thừa từ MainObj.
     - ExplosionObj: Xử lí vấn đề va chạm như nhân vật va chạm với quái
-  * Link demo: ....
+  * Link demo: https://youtu.be/pmKS_GF2O5A
 
 
  E. Các kỹ thuật lập trình:
@@ -68,10 +69,24 @@ D. Các chức năng của game:
 F. Tổng kết:
 
   1. Kết luận
+  * Game: các chức năng cơ bản của một tựa game phiêu lưu như di chuyển, nhảy, bắn, item, quái, đã tương đối hoàn thiện và đầy đủ. Tốc độ nhân vật, tốc độ quái, tốc độ đạn đã được tính toán xử lí sao cho ổn định nhất, không quá nhanh cũng không quá chậm.
+  * Bugs: trùng tọa độ (tức là khi nhân vật ăn cùng lúc 2 item cạnh nhau thì cả 2 item đều biến mất và chỉ có 1 item được công nhận và cộng vào bộ đếm, khi để item chéo với map thì khi nhân vật nhảy lên ăn item sẽ mất luôn cả item và 1 ô map)
+  * Performance: Ở mức tốt, game chạy mượt mà không hề giật lag.
+  * Graphics: Mức tốt, các hình ảnh trong game được thiết kế tỉ mỉ, mềm mại, có tính ăn ý với nhau.
+  * Mixer: Các âm thanh cơ bản như nhạc nền, sound effect như bắn, rơi, chết, ăn item được chọn lọc.
+  * Độ thân thiện: Game tương đối đơn giản, quen thuộc và dễ chơi phù hợp với trẻ em và trung niên. Nhạc của game khá chill không chỉ dùng làm nền mà có thể dùng để nghe ngủ.
   2. Tâm đắc
+  * Design map 1 cách tỉ mỉ tinh tế, suy nghĩ tạo ra game cần sự khéo léo, cẩn thận để có thể vượt qua.
+  * Hiểu hơn về cách tạo một dự án, cách lên kế hoạch, cách xây dựng cấu trúc - lớp.
+  * Hiểu thêm về các thư viện đồ họa (SDL) và cách sử dụng chúng
+  * Hiểu hơn về cách quản lí các đối tượng, các biến, cấp phát bộ nhớ động, giải phóng và tiết kiệm bộ nhớ.
+  * Biết phối hợp toàn bộ các kiến thức đã học trong suốt môn lập trình.
+  * Củng cố về kĩ năng tìm tòi, đọc hiểu, tra cứu các vấn đề của game.
   3. Hướng phát triển
-  * Tạo thêm nhiều màn chơi với đa dạng các loại map, item, đạn, quái, boss...
-  * Nâng mức độ khó của game: Màn hình trôi liên tục khiến người chơi phải suy nghĩ và xử lí nhanh, threats có đạn bắn về 2 phía, threats tấn công bất thường, giới hạn đạn bắn của nhân vật,....
+  * Trước hết là thu nhỏ tilemap về 32x32, giúp đồ họa game tiên tiến, mềm mại hơn, giúp có thể dễ dàng edit map được nhiều chi tiết hơn.
+  * Tạo thêm nhiều các level chơi với đa dạng các loại map, item, đạn, quái, boss...
+  * Tạo ra các mức độ khó của game: Màn hình trôi liên tục khiến người chơi phải suy nghĩ và xử lí nhanh, threats có đạn bắn về 2 phía, threats tấn công bất thường, threats có máu, giới hạn đạn bắn của nhân vật,...
+  * Làm chi tiết menu hơn, kết hợp việc điều chỉnh tắt bật to bé âm thanh trực tiếp trong game
 
 
 
