@@ -79,14 +79,14 @@ F. Tổng kết:
   * Design map 1 cách tỉ mỉ tinh tế, suy nghĩ tạo ra game cần sự khéo léo, cẩn thận để có thể vượt qua.
   * Hiểu hơn về cách tạo một dự án, cách lên kế hoạch, cách xây dựng cấu trúc - lớp.
   * Hiểu thêm về các thư viện đồ họa (SDL) và cách sử dụng chúng
-  * Hiểu hơn về cách quản lí các đối tượng, các biến, cấp phát bộ nhớ động, giải phóng và tiết kiệm bộ nhớ.
+  * Hiểu hơn về cách quản lí các đối tượng, các biến bằng con trỏ, sử dụng các biến giữa các file bằng cách kế thừa và truyền tham chiếu. Sử dụng mảng, cấp phát bộ nhớ động, giải phóng và tiết kiệm bộ nhớ.
   * Biết phối hợp toàn bộ các kiến thức đã học trong suốt môn lập trình.
   * Củng cố về kĩ năng tìm tòi, đọc hiểu, tra cứu các vấn đề của game.
   3. Hướng phát triển
   * Trước hết là thu nhỏ tilemap về 32x32, giúp đồ họa game tiên tiến, mềm mại hơn, giúp có thể dễ dàng edit map được nhiều chi tiết hơn.
   * Tạo thêm nhiều các level chơi với đa dạng các loại map, item, đạn, quái, boss...
   * Tạo ra các mức độ khó của game: Màn hình trôi liên tục khiến người chơi phải suy nghĩ và xử lí nhanh, threats có đạn bắn về 2 phía, threats tấn công bất thường, threats có máu, giới hạn đạn bắn của nhân vật,...
-  * Làm chi tiết menu hơn, kết hợp việc điều chỉnh tắt bật to bé âm thanh trực tiếp trong game
+  * Làm chi tiết menu hơn, kết hợp việc điều chỉnh tắt bật to bé âm thanh trực tiếp trong game.
 
 
 
