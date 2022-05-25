@@ -74,7 +74,7 @@
   * Performance: Ở mức tốt, game chạy mượt mà không hề giật lag.
   * Graphics: Mức tốt, các hình ảnh trong game được thiết kế tỉ mỉ, mềm mại, có tính ăn ý với nhau.
   * Mixer: Các âm thanh cơ bản như nhạc nền, sound effect như bắn, rơi, chết, ăn item được chọn lọc.
-  * Độ thân thiện: Game tương đối đơn giản, quen thuộc và dễ chơi phù hợp với trẻ em và trung niên. Nhạc của game khá chill không chỉ dùng làm nền mà có thể dùng để nghe ngủ.
+  * User-friendliness: Game tương đối đơn giản, quen thuộc và dễ chơi phù hợp với trẻ em và trung niên. Nhạc của game khá chill không chỉ dùng làm nền mà có thể dùng để nghe ngủ.
   
   **2. Tâm đắc**
   * Design map 1 cách tỉ mỉ tinh tế, suy nghĩ tạo ra game cần sự khéo léo, cẩn thận để có thể vượt qua.
