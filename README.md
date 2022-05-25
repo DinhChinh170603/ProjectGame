@@ -70,7 +70,6 @@
 
   **1. Kết luận**
   * Game: các chức năng cơ bản của một tựa game phiêu lưu như di chuyển, nhảy, bắn, item, quái, đã tương đối hoàn thiện và đầy đủ. Tốc độ nhân vật, tốc độ quái, tốc độ đạn đã được tính toán xử lí sao cho ổn định nhất, không quá nhanh cũng không quá chậm.
-  * Bugs: trùng tọa độ (tức là khi nhân vật ăn cùng lúc 2 item cạnh nhau thì cả 2 item đều biến mất và chỉ có 1 item được công nhận và cộng vào bộ đếm, khi để item chéo với map thì khi nhân vật nhảy lên ăn item sẽ mất luôn cả item và 1 ô map)
   * Performance: Ở mức tốt, game chạy mượt mà không hề giật lag.
   * Graphics: Mức tốt, các hình ảnh trong game được thiết kế tỉ mỉ, mềm mại, có tính ăn ý với nhau.
   * Mixer: Các âm thanh cơ bản như nhạc nền, sound effect như bắn, rơi, chết, ăn item được chọn lọc.
