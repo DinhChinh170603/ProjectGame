@@ -89,6 +89,7 @@
   * Tạo thêm nhiều các level chơi với đa dạng các loại map, item, đạn, quái, boss...
   * Tạo ra các mức độ khó của game: Màn hình trôi liên tục khiến người chơi phải suy nghĩ và xử lí nhanh, threats có đạn bắn về 2 phía, threats tấn công bất thường, threats có máu, giới hạn đạn bắn của nhân vật,...
   * Làm chi tiết menu hơn, kết hợp việc điều chỉnh tắt bật to bé âm thanh trực tiếp trong game.
+  * Thêm chức năng pause game (tạm dừng game).
 
 
 # Thanks for reading <3
