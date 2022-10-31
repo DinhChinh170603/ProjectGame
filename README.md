@@ -1,4 +1,4 @@
-# --------❤️--------Report ProjectGame--------❤️---------
+# <p align="center"> --------❤️--------ProjectGame--------❤️---------
 
 ***A. Thông tin sinh viên:***
   
@@ -17,7 +17,7 @@
 ***C. Mô tả chung về trò chơi:***
 
   * Tên trò chơi: MISERABLE DOG (dịch ra là "Chú chó đáng thương").
-  <img width="400" alt="Demo1" src="https://user-images.githubusercontent.com/96640478/170040667-82866042-3178-4d75-9884-0081f1729cba.png">
+  <img align="right" width="400" alt="Demo1" src="https://user-images.githubusercontent.com/96640478/170040667-82866042-3178-4d75-9884-0081f1729cba.png">
    
   * Mô tả: Miserable Dog có thể nói là một tựa game phiêu lưu vô cùng quen thuộc đối với trẻ em hay chính tuổi thơ của mỗi chúng ta. Nó bắt nguồn từ một tựa game vô cùng nổi tiếng có tên Mario đã ra mắt từ những năm 2000.
   * Các ý tưởng chính:
